@@ -5,14 +5,23 @@ header{
 body{
   background-image: url('ACB_logo.jpg');
   background-repeat: repeat-y;
+  background-attachment: fixed;
   background-size: 100px;
   color: #6495ED;
-  font-style: oblique;
+  font-style: normal;
   background-color: #FAEBD7;
   padding-left: 100px;
 }
 footer{
-  position: absolute;
+  position: relative;
   bottom: 0;
   width: 100%;
+  font-style: oblique;
+}
+p{
+  color: green;
+
+}
+div{
+  color: darkblue;
 }
