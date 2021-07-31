@@ -1,3 +1,18 @@
-h1{
-  color:purple;
+header{
+  color:#5F9EA0;
+  font-style: normal;
+}
+body{
+  background-image: url('ACB_logo.jpg');
+  background-repeat: repeat-y;
+  background-size: 100px;
+  color: #6495ED;
+  font-style: oblique;
+  background-color: #FAEBD7;
+  padding-left: 100px;
+}
+footer{
+  position: absolute;
+  bottom: 0;
+  width: 100%;
 }
