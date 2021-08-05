@@ -20,7 +20,7 @@ function addBudget() {
     var myArr = JSON.parse(sessionStorage.getItem(sessionStorage.length-1));
     console.log(myArr);
     //a++;
-    print_arr();
+    print_session();
     return thisBudget;
  }
 
