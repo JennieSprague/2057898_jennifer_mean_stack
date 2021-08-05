@@ -20,10 +20,11 @@ function addBudget() {
     var myArr = JSON.parse(sessionStorage.getItem(sessionStorage.length-1));
     console.log(myArr);
     //a++;
-    print_session();
+    //print_session();
     return thisBudget;
  }
 
+ /*
  //traverse through session storage
 function print_session(){
     for (var i = 0; i < sessionStorage.length; i++){
@@ -33,7 +34,7 @@ function print_session(){
 }
 
  sessionStorage.length
-
+*/
 
  function Clear(){
      document.getElementById("client").value = "";
@@ -41,7 +42,9 @@ function print_session(){
      document.getElementById("budget").value = "";
  }
  
+ 
  function create_table(){
+     var total_budget = 0;
     let table_refer = document.getElementById('budget_table');
     for (var i = 0; i < sessionStorage.length; i++){
         var myArr = JSON.parse(sessionStorage.getItem(i));
@@ -53,5 +56,8 @@ function print_session(){
         curr_row.insertCell(0).innerHTML = client;
         curr_row.insertCell(1).innerHTML = project;
         curr_row.insertCell(2).innerHTML = budget;
+        total_budget += parseInt(budget);
     }
+    
+    document.getElementById("total").innerHTML = "Total Budget is " + total_budget;
  }
