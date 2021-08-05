@@ -15,18 +15,27 @@ function addBudget() {
     //console.log(myArr);
     entries.push(thisBudget);
     console.log(entries);
-    sessionStorage.setItem(a, JSON.stringify(thisBudget));
+    sessionStorage.setItem(sessionStorage.length, JSON.stringify(thisBudget));
     //var user = {'name':'John'};
     //sessionStorage.setItem('user', JSON.stringify(user));
     //var obj = JSON.parse(sessionStorage.user);
-    console.log(sessionStorage.getItem(a));
-    a++;
-    //print_arr();
+    var myArr = JSON.parse(sessionStorage.getItem(sessionStorage.length-1));
+    console.log(myArr);
+    //a++;
+    print_arr();
     return thisBudget;
  }
 
+ //traverse through session storage
+function print_session(){
+    for (var i = 0; i < sessionStorage.length; i++){
+        var myArr = JSON.parse(sessionStorage.getItem(i));
+        console.log(myArr);
+    }
+}
+
  sessionStorage.length
- function print_arr(){
+ /*function print_arr(){
     for (var i = 0; i < sessionStorage.length; i++){
         var myArr = (sessionStorage.getItem(i)).split(',',3);
         var myClientName = myArr[0].split(':\"');
@@ -36,5 +45,12 @@ function addBudget() {
         var myParse = JSON.parse(myArr);
         console.log(myParse);
      }
+ }
+ */
+
+ function Clear(){
+     document.getElementById("client").value = "";
+     document.getElementById("project").value = "";
+     document.getElementById("budget").value = "";
  }
  
