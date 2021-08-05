@@ -11,8 +11,6 @@ function addBudget() {
     thisBudget.clientName = document.getElementById("client").value;
     thisBudget.projectName = document.getElementById("project").value;
     thisBudget.budget = document.getElementById("budget").value;
-    //var myArr = JSON.parse(thisBudget);
-    //console.log(myArr);
     entries.push(thisBudget);
     console.log(entries);
     sessionStorage.setItem(sessionStorage.length, JSON.stringify(thisBudget));
@@ -35,18 +33,7 @@ function print_session(){
 }
 
  sessionStorage.length
- /*function print_arr(){
-    for (var i = 0; i < sessionStorage.length; i++){
-        var myArr = (sessionStorage.getItem(i)).split(',',3);
-        var myClientName = myArr[0].split(':\"');
-        var myProjectName = myArr[1].split(':\"');
-        var myBudget = myArr[2].split(':\"');
-        console.log(myClientName[1]+ "," + myProjectName[1] + "," + myBudget[1]);
-        var myParse = JSON.parse(myArr);
-        console.log(myParse);
-     }
- }
- */
+
 
  function Clear(){
      document.getElementById("client").value = "";
@@ -54,3 +41,17 @@ function print_session(){
      document.getElementById("budget").value = "";
  }
  
+ function create_table(){
+    let table_refer = document.getElementById('budget_table');
+    for (var i = 0; i < sessionStorage.length; i++){
+        var myArr = JSON.parse(sessionStorage.getItem(i));
+        var client = myArr.clientName;
+        var project = myArr.projectName;
+        var budget = myArr.budget;
+        //var num_rows = table_refer.rows.length;
+        var curr_row = table_refer.insertRow(-1);
+        curr_row.insertCell(0).innerHTML = client;
+        curr_row.insertCell(1).innerHTML = project;
+        curr_row.insertCell(2).innerHTML = budget;
+    }
+ }
