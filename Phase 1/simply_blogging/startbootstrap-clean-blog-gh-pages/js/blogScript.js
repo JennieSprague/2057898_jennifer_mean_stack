@@ -8,41 +8,13 @@ function addBlog() {
   console.log("added blog");
   var blogStart = document.getElementById('postBlog');
 
-  var title = document.getElementById("title").value;
+  /*
+  var title = document.getElementById("title");
   var title_h2 = document.createElement('h2');
+  title_h2.appendChild(title.value);
   //var h2 = "<h2>" + title + "</h2>;
-  blogStart.insertAdjacentElement('afterbegin',title_h2);
-
-
-
-  const list = document.createElement("ul");
-  const li = document.createElement("li");
-  list.appendChild(li);
-  var img = document.createElement("img");
-  img.src = URL.createObjectURL(document.getElementById('image').files[0]);
-  img.height = 60;
-  img.onload = function() {
-    URL.revokeObjectURL(this.src);
-  }
-
-  li.appendChild(img);
-  blogStart.appendChild(list);
-
-
-/*
-  var file_selected = document.getElementById('image').files[0];
-  var new_image = document.createElement('img');
-  new_image.classList.add('obj');
-  new_image.file = file_selected;
-  blogStart.appendChild(new_image);
-  const reader = new FileReader();
-  reader.onload = (function(aImg) {
-    return function(e) {
-      aImg.src = e.target.result;
-    };
-  })(new_image);
-  reader.readAsDataURL(file_selected);
-*/
+  blogStart.insertAdjacentElement('beforebegin', title_h2);
+  */
 
   blog.title = document.getElementById("title").value;
   //var title = document.createElement('h2');
@@ -60,6 +32,43 @@ function addBlog() {
   blogStart.insertAdjacentHTML("beforeend", '<br/><br/>')
   blogStart.insertAdjacentText("beforeend", blog.articles);
   blogStart.insertAdjacentHTML("beforeend", '<br/><br/>')
+
+
+  const list = document.createElement("ul");
+  const li = document.createElement("li");
+  list.appendChild(li);
+  var img = document.createElement("img");
+  img.src = URL.createObjectURL(document.getElementById('image').files[0]);
+  img.height = 60;
+  img.onload = function() {
+    URL.revokeObjectURL(this.src);
+  }
+
+  li.appendChild(img);
+  blogStart.appendChild(list);
+
+  /* EXPERIMENTAL AREA
+  let div = document.createElement('div');
+  div.innerHTML = '<p>'title'</p>';
+  document.body.appendChild(div);
+  */
+
+  /*
+    var file_selected = document.getElementById('image').files[0];
+    var new_image = document.createElement('img');
+    new_image.classList.add('obj');
+    new_image.file = file_selected;
+    blogStart.appendChild(new_image);
+    const reader = new FileReader();
+    reader.onload = (function(aImg) {
+      return function(e) {
+        aImg.src = e.target.result;
+      };
+    })(new_image);
+    reader.readAsDataURL(file_selected);
+  */
+
+
   /*let cardContainer = null;
   let card = document.createElement('div');
   card.className = 'card shadow cursor-pointer';

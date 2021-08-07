@@ -27,7 +27,8 @@
   margin: 4px 2px;
   cursor: pointer;
 }
-object-fit: contain;
+
+
 
 :root {
   --bs-blue: #0d6efd;
