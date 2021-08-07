@@ -39,7 +39,7 @@ function addBlog() {
   list.appendChild(li);
   var img = document.createElement("img");
   img.src = URL.createObjectURL(document.getElementById('image').files[0]);
-  img.height = 60;
+  img.height = 300;
   img.onload = function() {
     URL.revokeObjectURL(this.src);
   }
@@ -47,11 +47,6 @@ function addBlog() {
   li.appendChild(img);
   blogStart.appendChild(list);
 
-  /* EXPERIMENTAL AREA
-  let div = document.createElement('div');
-  div.innerHTML = '<p>'title'</p>';
-  document.body.appendChild(div);
-  */
 
   /*
     var file_selected = document.getElementById('image').files[0];
