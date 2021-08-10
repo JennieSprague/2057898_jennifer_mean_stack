@@ -44,7 +44,7 @@ function print_session(){
  
  
  function create_table(){
-     var total_budget = 0;
+    var total_budget = 0;
     let table_refer = document.getElementById('budget_table');
     for (var i = 0; i < sessionStorage.length; i++){
         var myArr = JSON.parse(sessionStorage.getItem(i));
