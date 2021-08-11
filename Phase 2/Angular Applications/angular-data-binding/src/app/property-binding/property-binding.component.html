@@ -1,0 +1,11 @@
+<div>
+    <h2>One way data binding using property binding</h2>
+    Other name : <input type="text" value = "lname"/><br/>
+    Other name :<input type = "text" [value]="lname"/><br/>
+    Other name : <span [innerText]="lname"></span>
+    <br/>
+    <input type="button" value="Click Here"/><br/>
+    <input type="button" value="Click Here" disabled/><br/>
+    <input type="button" value = "Click Here" disabled={{f1}}/><br/>
+    <input type="button" value = "Click Here" [disabled]="f2"/><br/>
+</div>
