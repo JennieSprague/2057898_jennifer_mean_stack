@@ -6,6 +6,8 @@ import { StringInterpolationComponent } from './string-interpolation/string-inte
 import { PropertyBindingComponent } from './property-binding/property-binding.component';
 import { EventBindingComponent } from './event-binding/event-binding.component';
 import { TemplateReferenceComponent } from './template-reference/template-reference.component';
+import { TwoWayBindingComponent } from './two-way-binding/two-way-binding.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -13,10 +15,11 @@ import { TemplateReferenceComponent } from './template-reference/template-refere
     StringInterpolationComponent,
     PropertyBindingComponent,
     EventBindingComponent,
-    TemplateReferenceComponent
+    TemplateReferenceComponent,
+    TwoWayBindingComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule, FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
