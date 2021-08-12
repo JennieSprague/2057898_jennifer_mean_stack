@@ -47,17 +47,30 @@ function add(index) {
     //sessionStorage.setItem(cart_size.toString , JSON.stringify(products[index]));
 }
 function checkout() {
+    var total_price = 0;
     var checkout_cart = JSON.parse(localStorage.getItem("cart"));
     console.log(checkout_cart);
-    console.log(checkout_cart[0]);
-    console.log(checkout_cart.length);
+    var my_table = document.getElementById("cart_table");
+    var tbody = document.createElement("tbody");
+    my_table.appendChild(tbody);
+    //console.log(checkout_cart[0]);
+    //console.log(checkout_cart.length);
     for (var i = 0; i < checkout_cart.length; i++) {
+        var row = document.createElement("tr");
+        var cell = document.createElement("td");
         var curr_product_name = checkout_cart[i].name;
-        console.log("product name");
-        console.log(curr_product_name);
+        cell.textContent = curr_product_name;
+        row.appendChild(cell);
+        //console.log("product name");
+        //console.log(curr_product_name);
         var curr_product_price = checkout_cart[i].price;
-        console.log("product price");
-        console.log(curr_product_price);
+        total_price += curr_product_price;
+        var cell2 = document.createElement("td");
+        cell2.textContent = curr_product_price;
+        row.appendChild(cell2);
+        //console.log("product price");
+        //console.log(curr_product_price);
+        tbody.appendChild(row);
     }
     //console.log(Object.keys(sessionStorage));
     //let item = JSON.parse(sessionStorage.getItem)

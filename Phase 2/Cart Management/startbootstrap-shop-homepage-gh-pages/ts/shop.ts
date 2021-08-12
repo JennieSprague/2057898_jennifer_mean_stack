@@ -47,19 +47,32 @@ function add(index: number){
 }
 
 function checkout(){
+    let total_price: number = 0;
     let checkout_cart = JSON.parse(localStorage.getItem("cart"));
     console.log(checkout_cart);
+    let my_table = document.getElementById("cart_table");
+    let tbody = document.createElement("tbody");
+    my_table.appendChild(tbody);
     //console.log(checkout_cart[0]);
     //console.log(checkout_cart.length);
     for (let i = 0; i < checkout_cart.length; i++){
+        let row = document.createElement("tr");
+        let cell = document.createElement("td");
         let curr_product_name = checkout_cart[i].name;
-        console.log("product name");
-        console.log(curr_product_name);
+        cell.textContent =curr_product_name;
+        row.appendChild(cell);
+        //console.log("product name");
+        //console.log(curr_product_name);
         let curr_product_price = checkout_cart[i].price;
-        console.log("product price");
-        console.log(curr_product_price);
+        total_price += curr_product_price;
+        let cell2 = document.createElement("td");
+        cell2.textContent =curr_product_price;
+        row.appendChild(cell2);
+        //console.log("product price");
+        //console.log(curr_product_price);
+        tbody.appendChild(row);
     }
-
+    
     //console.log(Object.keys(sessionStorage));
     //let item = JSON.parse(sessionStorage.getItem)
     //let product_name = cart
