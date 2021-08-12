@@ -1,4 +1,5 @@
 //typescipt file for shopping cart
+let cart_size: number = 0;
 class Product {
     constructor(public name:string,public price:number){
         this.name = name;
@@ -33,6 +34,8 @@ function add(index: number){
     console.log('added to cart');
     console.log(index);
     console.log(products[index]);
+    cart_size++;
+    document.getElementById("cart_size").innerHTML = cart_size.toString();
     //session storage products[index]
     cart.push(products[index]);
 }
