@@ -1,0 +1,6 @@
+Github:
+https://github.com/JennieSprague/2057898_jennifer_mean_stack/tree/master/Phase%202/Cart%20Management/startbootstrap-shop-homepage-gh-pages
+
+
+1 ts file : shop.ts (add items to cart, display table at checkout)
+2 html files: index.html (home page) and cart.html (checkout page)
