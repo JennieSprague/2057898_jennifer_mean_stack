@@ -72,7 +72,7 @@ function checkout(){
         //console.log(curr_product_price);
         tbody.appendChild(row);
     }
-    
+    document.getElementById("total").innerHTML = "Total : " + total_price.toString();
     //console.log(Object.keys(sessionStorage));
     //let item = JSON.parse(sessionStorage.getItem)
     //let product_name = cart
