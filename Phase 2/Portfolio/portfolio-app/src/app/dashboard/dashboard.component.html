@@ -1,0 +1,25 @@
+<div>
+    <h2>
+        Welcome, {{user}}
+        <hr/>
+        Name : <input type="text" #nameRef/><br/>
+        Phone Number : <input type="text" #numRef>
+        <input type="button" value="Add Contact" 
+        (click)="addContact(nameRef.value, numRef.value)"/><br/>
+        <table border="1">
+            <tr>
+                <th>Name</th>
+                <th>Phone Number</th>
+            </tr>
+            <!-- <tr *ngFor="let emp of employees">
+                <td>{{emp.id}}</td> 
+                <td>{{emp.name}}</td>
+                <td>{{emp.salary}}</td>
+            </tr> -->
+            <tr *ngFor="let con of contacts">
+                <td>{{con.name}}</td>
+                <td>{{con.phone}}</td>
+            </tr>
+    </table>
+    </h2>
+</div>
