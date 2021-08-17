@@ -1,3 +1,4 @@
+import { User } from './../user';
 // import { Component, OnInit } from '@angular/core';
 // import { NgForm } from '@angular/forms';
 // import { FormControl, FormGroup } from '@angular/forms';
@@ -44,10 +45,12 @@ import { Router} from '@angular/router';
   styleUrls: ['./tdf-login-page.component.css']
 })
 export class TdfLoginPageComponent implements OnInit {
+    
     loginRef = new FormGroup({
     user:new FormControl(),
     pass:new FormControl()
   });
+  users :Array<User>=new Array();
   msg:string=""
     constructor(public router:Router) { } //DI
   ngOnInit(): void {
@@ -62,4 +65,13 @@ export class TdfLoginPageComponent implements OnInit {
     }
     this.loginRef.reset();   
   }
+  isExist (user:User) {
+    for(var x = 0; x < this.users.length; x++) {
+        var current = this.users[x];
+        if(current.username === user.username && current.password === user.password) {
+            return true;
+        }
+    }
+    return false;
+  };
 }
