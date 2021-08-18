@@ -19,10 +19,7 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  // addName(nameRef:any){
-  //   let name = nameRef.value;
-  //   this.stdNames.push(name);
-  // }
+  
   addContact(name:string, phone:string){
     let newContact = new Contact(name, phone);
     this.contacts.push(newContact);
