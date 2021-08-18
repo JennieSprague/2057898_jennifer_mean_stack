@@ -13,29 +13,20 @@ import { EventEmitter, Output } from '@angular/core';
 })
 
 export class RegistrationComponent implements OnInit {
-  // @Output() redirect:EventEmitter<User> = new EventEmitter<User>();
-  @Output() newUserEvent = new EventEmitter<User>();
-
-    data:any = {text: "example"};
-    newUser  = new User("","");
-    constructor(private router:Router){}
-
   regRef = new FormGroup({
     username:new FormControl(),
     password:new FormControl()
   });
-
+  constructor(private router:Router){}
   ngOnInit(): void {
   }
 
-  regUser(username:string, password:string ){
-    //let register = this.regRef.value;
-    // let newUser = new User(username, password);
-    // this.newUserEvent.emit(this.newUser);
-    sessionStorage.setItem("newUsername", username);
-    sessionStorage.setItem("newPassword", password);
-    //sessionStorage.setItem("newUser", newUser.toString());
-    // this.router.navigate(["login:/user", newUser]); 
+  regUser(){
+    let register = this.regRef.value;
+    console.log("new username :" + register.username);
+    console.log("new pass :" + register.password);
+    sessionStorage.setItem('newUsername', register.username);
+    sessionStorage.setItem('newPassword', register.password);
     this.router.navigate(["login"]);
   }
 }

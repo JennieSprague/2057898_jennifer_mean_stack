@@ -8,7 +8,7 @@ const routes: Routes = [
   {path:"home/:uname",component:DashboardComponent}, // uname is use to receive the value from a path
   {path:"register",component:RegistrationComponent},
   {path:"login", component:TdfLoginPageComponent},
-  {path:"login/:user", component:TdfLoginPageComponent}
+  //{path:"login/:user", component:TdfLoginPageComponent}
 ];
 
 @NgModule({

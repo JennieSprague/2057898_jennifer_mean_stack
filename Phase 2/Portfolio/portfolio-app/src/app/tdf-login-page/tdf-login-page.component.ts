@@ -20,38 +20,35 @@ export class TdfLoginPageComponent implements OnInit {
   msg:string=""
   username?:string=""
   password?:string=""
-    constructor(public router:Router, public activeRoute:ActivatedRoute) { 
-      this.activeRoute.params.subscribe(data=>this.username=data.user.username);
-      console.log(this.username);
-      this.activeRoute.params.subscribe(data=>this.password=data.user.password);
-      console.log(this.password);
-    } //DI
-    
-    // constructor(public activeRoute:ActivatedRoute) { 
-    //   this.activeRoute.params.subscribe(data=>this.user=data.uname);
-    // } 
+  constructor(public router:Router) {} //DI
 
   ngOnInit(): void {
   }
   checkUser(){
     let login = this.loginRef.value;
-    // if (sessionStorage.length>0){
-    //   //let checkout_cart = JSON.parse(localStorage.getItem("cart"));
-    //   let newUser  = sessionStorage.getItem("newUser");
-    //   if (newUser != null) newUser  = JSON.parse(newUser);
-    //   let newlyRegistered = new User(newUser.username, newUser.password);
-    //   this.users.push(newUser);
-    // }
+    console.log(this.users);
     if (sessionStorage.length>0){
-      let newUsername:string = JSON.parse(sessionStorage.getItem('newUsername') || '{}');
-      let newPassword:string = JSON.parse(sessionStorage.getItem('newPassword') || '{}');
+      console.log("checking session storage");
+      let newUsername:string="";
+      let newPassword:string="";
+      // let newUsername:string = JSON.parse(sessionStorage.getItem('newUsername') || '{}');
+      // let newPassword:string = JSON.parse(sessionStorage.getItem('newPassword') || '{}');
+      // sessionStorage.clear();
+      if (sessionStorage.getItem('newUsername')) {
+        // Restore the contents of the text field
+        newUsername = sessionStorage.getItem('newUsername') ||'{}';
+      }
+      if (sessionStorage.getItem('newPassword')) {
+        // Restore the contents of the text field
+        newPassword = sessionStorage.getItem('newPassword')||'{}';
+      }
       let newUser = new User(newUsername, newPassword); 
       this.users.push(newUser);
     }
-    // if(login.user=="Raj" && login.pass=="123"){
-    //       this.router.navigate(["home",login.user]);  // appended name through path
-          
-    // } 
+    console.log(this.users);
+    if(login.user=="Raj" && login.pass=="123"){
+          this.router.navigate(["home",login.user]);  // appended name through path
+    } 
     let loginUser = new User(login.user, login.pass);
     if (this.isExist(loginUser)){
       this.router.navigate(["home",login.user]);
@@ -62,8 +59,8 @@ export class TdfLoginPageComponent implements OnInit {
     this.loginRef.reset();   
   }
   isExist (user:User) {
-    for(var x = 0; x < this.users.length; x++) {
-        var current = this.users[x];
+    for(let x = 0; x < this.users.length; x++) {
+        let current = this.users[x];
         if(current.username === user.username && current.password === user.password) {
             return true;
         }
