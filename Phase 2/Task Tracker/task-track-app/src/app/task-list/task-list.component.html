@@ -1,1 +1,56 @@
-<p>task-list works!</p>
+<!-- <div class="container">
+    <h2>Task Tracker</h2>
+    <form [formGroup]="taskRef" (ngSubmit)="addTask()" class="form-group">
+        <label>ID</label>
+        <input type="text" formControlName="idNum"class="form-control"/>
+        <label>Name</label>
+        <input type="text" formControlName="name" class="form-control"/>
+        <label>Task</label>
+        <input type="text" formControlName="task" class="form-control" #newTask/><br/>
+        <label>Deadline</label>
+        <input type="password" formControlName="deadline" class="form-control" #newDeadline/><br/>
+        <input type="submit" value="Submit!" class="btn btn-success"/>
+        <input type="reset" value="reset" class="btn btn-info"/>
+    </form> -->
+<div class="flex-container">
+    <!-- <div class = "float-child"> -->
+    <div class="flex-child magenta">
+        <!-- <div class="input-group mb-3"> -->
+            <!-- <div class="input-group-prepend"> -->
+                <div class="input" id="basic-addon1">
+                    <div>ID : <input type="text" id = "id" #idRef/></div>
+                    <div>Name : <input type="text" id = "name" #nameRef></div>
+                    <div>Task : <input type="text" id = "task" #taskRef></div>
+                    <div>Deadline : <input type="text" id = "deadline" #deadlineRef></div>
+                </div>
+            <!-- </div> -->
+        <!-- </div> -->
+    
+        <input type="submit" class="btn btn-outline-success" value="Add Task" 
+        (click)="addTask(idRef.value, nameRef.value, taskRef.value, deadlineRef.value)"/><br/>
+    </div>
+    <!-- </div> -->
+    <!-- <input type="reset" value = "reset" (click)="reset()" class="button btn-info"> -->
+    <!-- <div class = "float-child"> -->
+    <div class="flex-child green">
+        <table class = "table" border="1">
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Task</th>
+                <th>Deadline</th>
+            </tr>
+          
+            <tr *ngFor="let task of tasks">
+                <td>{{task.ID}}</td>
+                <td>{{task.name}}</td>
+                <td>{{task.task}}</td>
+                <td>{{task.deadline}}</td>
+            </tr>
+        </table>
+    </div>
+    <!-- </div> -->
+    <br/>
+    <!-- <span style="color:red;">{{msg}}</span> -->
+<!-- </div> -->
+</div>
