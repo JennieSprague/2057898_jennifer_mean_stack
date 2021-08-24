@@ -30,7 +30,13 @@ let date_ob = new Date(ts);
 let date = date_ob.getDate();
 let month = date_ob.getMonth() + 1;
 let year = date_ob.getFullYear();
+let hours = date_ob.getHours();
+let minutes = date_ob.getMinutes();
+let seconds = date_ob.getSeconds();
+let time = hours + ":" + minutes + ":" + seconds;
 console.log(year + "-" + month + "-" + date);
+let day = year + "-" + month + "-" + date;
+//console.log(time);
 console.log("Server listening on Port 8080") 
 
 // User Input
@@ -45,7 +51,7 @@ r1.question("Enter first name",(firstname)=> {
                 console.log("Name is "+firstname + " " + lastname);
                 console.log("Gender is "+gender);
                 console.log("Email is "+email);
-                record.push({"firstname":firstname,"lastname":lastname,"gender":gender,"email":email});
+                record.push({"firstname":firstname,"lastname":lastname,"gender":gender,"email":email, "day":day, "time":time});
                 fs.writeFileSync("record.json",JSON.stringify(record));
                 r1.close();
             })

@@ -1,1 +1,2 @@
-[{"firstname":"Jennie","lastname":"Sprague","gender":"female","email":"jen@gmail.com"},{"firstname":"Marissa","lastname":"Sprague","gender":"female","email":"mar@gmail.com"}]
+[{"firstname":"Jennie","lastname":"Sprague","gender":"f","email":"jen@gmail.com","day":"2021-8-23","time":"23:23:15"},
+    {"firstname":"Marissa","lastname":"Sprague","gender":"f","email":"marissa@gmail.com","day":"2021-8-23","time":"23:25:39"}]
