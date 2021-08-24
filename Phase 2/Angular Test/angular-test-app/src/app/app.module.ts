@@ -9,6 +9,8 @@ import { environment } from '../environments/environment';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TestComponent } from './test/test.component';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,8 @@ import { HttpClientModule } from '@angular/common/http';
       registrationStrategy: 'registerWhenStable:30000'
     }),
     BrowserAnimationsModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule, ReactiveFormsModule
   ],
   providers: [DataService],
   bootstrap: [AppComponent]
