@@ -1,263 +1,265 @@
 <div>
     <input type="button" value="Start Test" (click)="start()" />
     <!-- <div *ngFor="let question of questionData"> -->
-    <form id="quizForm" (ngSubmit)="submitQuiz()">
+    <form name ="myForm" id="quizForm" (ngSubmit)="submitQuiz()">
         <div *ngIf="flag">
             <div>
                 {{questionData[0].question}}
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="q01">
-                    <label class="form-check-label" for="flexRadioDefault1">
+                    <input class="form-check-input" type="radio" name="q0" id="q01" value="{{questionData[0].ans1}}">
+                    <label class="form-check-label" for="q01">
                         {{questionData[0].ans1}}
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="q02">
-                    <label class="form-check-label" for="flexRadioDefault1">
+                    <input class="form-check-input" type="radio" name="q0" id="q02" value="{{questionData[0].ans2}}">
+                    <label class="form-check-label" for="q02">
                         {{questionData[0].ans2}}
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="q03">
-                    <label class="form-check-label" for="flexRadioDefault1">
+                    <input class="form-check-input" type="radio" name="q0" id="q03" value="{{questionData[0].ans3}}">
+                    <label class="form-check-label" for="q03">
                         {{questionData[0].ans3}}
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="q04">
-                    <label class="form-check-label" for="flexRadioDefault1">
+                    <input class="form-check-input" type="radio" name="q0" id="q04" value="{{questionData[0].ans4}}">
+                    <label class="form-check-label" for="q04">
                         {{questionData[0].ans4}}
                     </label>
                 </div>
                 {{questionData[1].question}}
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="flexRadioDefault1" id="q11">
-                    <label class="form-check-label" for="flexRadioDefault1">
+                    <input class="form-check-input" type="radio" name="q1" id="q11" value="{{questionData[1].ans1}}">
+                    <label class="form-check-label" for="q11">
                         {{questionData[1].ans1}}
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="flexRadioDefault1" id="q12">
-                    <label class="form-check-label" for="flexRadioDefault1">
+                    <input class="form-check-input" type="radio" name="q1" id="q12" value="{{questionData[1].ans2}}">
+                    <label class="form-check-label" for="q12">
                         {{questionData[1].ans2}}
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="flexRadioDefault1" id="q13">
-                    <label class="form-check-label" for="flexRadioDefault1">
+                    <input class="form-check-input" type="radio" name="q1" id="q13" value="{{questionData[1].ans3}}">
+                    <label class="form-check-label" for="q13">
                         {{questionData[1].ans3}}
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="flexRadioDefault1" id="q14">
-                    <label class="form-check-label" for="flexRadioDefault1">
+                    <input class="form-check-input" type="radio" name="q1" id="q14" value="{{questionData[1].ans4}}">
+                    <label class="form-check-label" for="q14">
                         {{questionData[1].ans4}}
                     </label>
                 </div>
                 {{questionData[2].question}}
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="flexRadioDefault2" id="q21">
-                    <label class="form-check-label" for="flexRadioDefault1">
+                    <input class="form-check-input" type="radio" name="q2" id="q21" value="{{questionData[2].ans1}}">
+                    <label class="form-check-label" for="q21">
                         {{questionData[2].ans1}}
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="flexRadioDefault2" id="q22">
-                    <label class="form-check-label" for="flexRadioDefault1">
+                    <input class="form-check-input" type="radio" name="q2" id="q22" value="{{questionData[2].ans2}}">
+                    <label class="form-check-label" for="q22">
                         {{questionData[2].ans2}}
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="flexRadioDefault2" id="q23">
-                    <label class="form-check-label" for="flexRadioDefault1">
+                    <input class="form-check-input" type="radio" name="q2" id="q23" value="{{questionData[2].ans3}}">
+                    <label class="form-check-label" for="q23">
                         {{questionData[2].ans3}}
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="flexRadioDefault2" id="q24">
-                    <label class="form-check-label" for="flexRadioDefault1">
+                    <input class="form-check-input" type="radio" name="q2" id="q24" value="{{questionData[2].ans4}}">
+                    <label class="form-check-label" for="q24">
                         {{questionData[2].ans4}}
                     </label>
                 </div>
                 {{questionData[3].question}}
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="flexRadioDefault3" id="q31">
-                    <label class="form-check-label" for="flexRadioDefault1">
+                    <input class="form-check-input" type="radio" name="q3" id="q31" value="{{questionData[3].ans1}}">
+                    <label class="form-check-label" for="q31">
                         {{questionData[3].ans1}}
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="flexRadioDefault3" id="q32">
-                    <label class="form-check-label" for="flexRadioDefault1">
+                    <input class="form-check-input" type="radio" name="q3" id="q32" value="{{questionData[3].ans2}}">
+                    <label class="form-check-label" for="q32">
                         {{questionData[3].ans2}}
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="flexRadioDefault3" id="q33">
-                    <label class="form-check-label" for="flexRadioDefault1">
+                    <input class="form-check-input" type="radio" name="q3" id="q33" value="{{questionData[3].ans3}}">
+                    <label class="form-check-label" for="q33">
                         {{questionData[3].ans3}}
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="flexRadioDefault3" id="q34">
-                    <label class="form-check-label" for="flexRadioDefault1">
+                    <input class="form-check-input" type="radio" name="q3" id="q34" value="{{questionData[3].ans4}}">
+                    <label class="form-check-label" for="q34">
                         {{questionData[3].ans4}}
                     </label>
                 </div>
                 {{questionData[4].question}}
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="flexRadioDefault4" id="q41">
-                    <label class="form-check-label" for="flexRadioDefault1">
+                    <input class="form-check-input" type="radio" name="q4" id="q41" value="{{questionData[4].ans1}}">
+                    <label class="form-check-label" for="q41">
                         {{questionData[4].ans1}}
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="flexRadioDefault4" id="q42">
-                    <label class="form-check-label" for="flexRadioDefault1">
+                    <input class="form-check-input" type="radio" name="q4" id="q42" value="{{questionData[4].ans2}}">
+                    <label class="form-check-label" for="q42">
                         {{questionData[4].ans2}}
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="flexRadioDefault4" id="q43">
-                    <label class="form-check-label" for="flexRadioDefault1">
+                    <input class="form-check-input" type="radio" name="q4" id="q43" value="{{questionData[4].ans3}}">
+                    <label class="form-check-label" for="q43">
                         {{questionData[4].ans3}}
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="flexRadioDefault4" id="q44">
-                    <label class="form-check-label" for="flexRadioDefault1">
+                    <input class="form-check-input" type="radio" name="q4" id="q44" value="{{questionData[4].ans4}}">
+                    <label class="form-check-label" for="q44">
                         {{questionData[4].ans4}}
                     </label>
                 </div>
                 {{questionData[5].question}}
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="flexRadioDefault5" id="q51">
-                    <label class="form-check-label" for="flexRadioDefault1">
+                    <input class="form-check-input" type="radio" name="q5" id="q51" value="{{questionData[5].ans1}}">
+                    <label class="form-check-label" for="q51">
                         {{questionData[5].ans1}}
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="flexRadioDefault5" id="q52">
-                    <label class="form-check-label" for="flexRadioDefault1">
+                    <input class="form-check-input" type="radio" name="q5" id="q52" value="{{questionData[5].ans2}}">
+                    <label class="form-check-label" for="q52">
                         {{questionData[5].ans2}}
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="flexRadioDefault5" id="q53">
-                    <label class="form-check-label" for="flexRadioDefault1">
+                    <input class="form-check-input" type="radio" name="q5" id="q53" value="{{questionData[5].ans3}}">
+                    <label class="form-check-label" for="q53">
                         {{questionData[5].ans3}}
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="flexRadioDefault5" id="q54">
-                    <label class="form-check-label" for="flexRadioDefault1">
+                    <input class="form-check-input" type="radio" name="q5" id="q54" value="{{questionData[5].ans4}}">
+                    <label class="form-check-label" for="q54">
                         {{questionData[5].ans4}}
                     </label>
                 </div>
                 {{questionData[6].question}}
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="flexRadioDefault6" id="q61">
-                    <label class="form-check-label" for="flexRadioDefault1">
+                    <input class="form-check-input" type="radio" name="q6" id="q61" value="{{questionData[6].ans1}}">
+                    <label class="form-check-label" for="q61">
                         {{questionData[6].ans1}}
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="flexRadioDefault6" id="q62">
-                    <label class="form-check-label" for="flexRadioDefault1">
+                    <input class="form-check-input" type="radio" name="q6" id="q62" value="{{questionData[6].ans2}}">
+                    <label class="form-check-label" for="q62">
                         {{questionData[6].ans2}}
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="flexRadioDefault6" id="q63">
-                    <label class="form-check-label" for="flexRadioDefault1">
+                    <input class="form-check-input" type="radio" name="q6" id="q63" value="{{questionData[6].ans3}}">
+                    <label class="form-check-label" for="q63">
                         {{questionData[6].ans3}}
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="flexRadioDefault6" id="q64">
-                    <label class="form-check-label" for="flexRadioDefault1">
+                    <input class="form-check-input" type="radio" name="q6" id="q64" value="{{questionData[6].ans4}}">
+                    <label class="form-check-label" for="q64">
                         {{questionData[6].ans4}}
                     </label>
                 </div>
                 {{questionData[7].question}}
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="flexRadioDefault7" id="q71">
-                    <label class="form-check-label" for="flexRadioDefault1">
+                    <input class="form-check-input" type="radio" name="q7" id="q71" value="{{questionData[7].ans1}}">
+                    <label class="form-check-label" for="q71">
                         {{questionData[7].ans1}}
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="flexRadioDefault7" id="q72">
-                    <label class="form-check-label" for="flexRadioDefault1">
+                    <input class="form-check-input" type="radio" name="q7" id="q72" value="{{questionData[7].ans2}}">
+                    <label class="form-check-label" for="q72">
                         {{questionData[7].ans2}}
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="flexRadioDefault7" id="q73">
-                    <label class="form-check-label" for="flexRadioDefault1">
+                    <input class="form-check-input" type="radio" name="q7" id="q73" value="{{questionData[7].ans3}}">
+                    <label class="form-check-label" for="q73">
                         {{questionData[7].ans3}}
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="flexRadioDefault7" id="q74">
-                    <label class="form-check-label" for="flexRadioDefault1">
+                    <input class="form-check-input" type="radio" name="q7" id="q74" value="{{questionData[7].ans4}}">
+                    <label class="form-check-label" for="q74">
                         {{questionData[7].ans4}}
                     </label>
                 </div>
                 {{questionData[8].question}}
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="flexRadioDefault8" id="q81">
-                    <label class="form-check-label" for="flexRadioDefault1">
+                    <input class="form-check-input" type="radio" name="q8" id="q81" value="{{questionData[8].ans1}}">
+                    <label class="form-check-label" for="q81">
                         {{questionData[8].ans1}}
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="flexRadioDefault8" id="q82">
-                    <label class="form-check-label" for="flexRadioDefault1">
+                    <input class="form-check-input" type="radio" name="q8" id="q82" value="{{questionData[8].ans2}}">
+                    <label class="form-check-label" for="q82">
                         {{questionData[8].ans2}}
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="flexRadioDefault8" id="q83">
-                    <label class="form-check-label" for="flexRadioDefault1">
+                    <input class="form-check-input" type="radio" name="q8" id="q83" value="{{questionData[8].ans3}}">
+                    <label class="form-check-label" for="q83">
                         {{questionData[8].ans3}}
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="flexRadioDefault8" id="q84">
-                    <label class="form-check-label" for="flexRadioDefault1">
+                    <input class="form-check-input" type="radio" name="q8" id="q84" value="{{questionData[8].ans4}}">
+                    <label class="form-check-label" for="q84">
                         {{questionData[8].ans4}}
                     </label>
                 </div>
                 {{questionData[9].question}}
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="flexRadioDefault9" id="q91">
-                    <label class="form-check-label" for="flexRadioDefault1">
+                    <input class="form-check-input" type="radio" name="q9" id="q91" value="{{questionData[9].ans1}}">
+                    <label class="form-check-label" for="q91">
                         {{questionData[9].ans1}}
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="flexRadioDefault9" id="q92">
-                    <label class="form-check-label" for="flexRadioDefault1">
+                    <input class="form-check-input" type="radio" name="q9" id="q92" value="questionData[9].ans2">
+                    <label class="form-check-label" for="q92">
                         {{questionData[9].ans2}}
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="flexRadioDefault9" id="q93">
-                    <label class="form-check-label" for="flexRadioDefault1">
+                    <input class="form-check-input" type="radio" name="q9" id="q93" value="{{questionData[9].ans3}}">
+                    <label class="form-check-label" for="q93">
                         {{questionData[9].ans3}}
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="flexRadioDefault9" id="q94">
-                    <label class="form-check-label" for="flexRadioDefault1">
+                    <input class="form-check-input" type="radio" name="q9" id="q94" value="questionData[9].ans4">
+                    <label class="form-check-label" for="q94">
                         {{questionData[9].ans4}}
                     </label>
                 </div>
             </div>
             <!-- <button (click) = "submitQuiz()">Submit</button> -->
-            <input type="submit" value="submit"/>
-
+            <!-- <input type="submit" value="submit"/> -->
+            <button type="submit">Submit</button>
         </div>
     </form>
+    <pre id="result">
+    </pre>
 </div>
