@@ -38,16 +38,18 @@ export class TestComponent implements OnInit {
         if (ele[i].checked){
           let result = document.getElementById("result") || null;
           if (result != null) {
-            result.innerHTML += qNum + " " + ele[i].name + " : " + ele[i].value +"<br>";
+            result.innerHTML += ele[i].name + " : " + ele[i].value +"<br>";
             if(this.questionData[qNum].correctAns == ele[i].value){
               score++;
               result.innerHTML += ele[i].name + " is correct <br>";
             }
             else{
-              console.log(this.questionData[qNum].correctAns);
+              // console.log(this.questionData[qNum].correctAns);
               result.innerHTML += "Missed " + ele[i].name + "<br>";
               result.innerHTML += "Correct answer is " + this.questionData[qNum].correctAns + "<br>";
               //console.log(this.questionData[0].ans1);
+              // let answer = document.getElementById(ele[i].id);
+              // if (answer != null) answer.innerHTML += " Wrong answer";
             }
             qNum++;
           }
@@ -57,6 +59,6 @@ export class TestComponent implements OnInit {
 
     }
     let result = document.getElementById("result") || null;
-    if (result != null) result.innerHTML += "Score is " + score + "/10";
+    if (result != null) result.innerHTML += "<h2>Score is " + score + "/10</h2>";
   }
 }
