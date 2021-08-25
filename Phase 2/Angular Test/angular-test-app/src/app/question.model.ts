@@ -4,6 +4,6 @@ export class Question {
     public ans2: string,
     public ans3: string,
     public ans4: string,
-    public corretctAns: string,
+    public correctAns: string,
     ){}
 }
