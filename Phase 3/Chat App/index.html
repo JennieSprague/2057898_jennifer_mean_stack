@@ -7,15 +7,35 @@
     <title>Document</title>
     <!-- connecting library file part of node_module folder -->
     <script src="/socket.io/socket.io.js"></script>
-    <script type="text/JavaScript">
+    <!-- <script type="text/JavaScript">
         var socket = io();
         socket.emit("obj","Hello Server I am Web Socket Client");
         socket.on("obj1",(msg)=> {
             console.log(msg);
         })
-    </script>
+    </script> -->
+    <script type="text/JavaScript">
+        let ws = new WebSocket("ws://localhost:9090");
+    
+        //open the connecton 
+        ws.onopen= ()=> {
+            // send data to web socket server application
+            ws.send("Hello Server, I am Web Socket Client App!");
+            info = ()=> {
+                let msg = document.getElementById("dd").value;
+                ws.send(msg);
+                document.getElementById("dd").value="";
+            }
+        }
+        // receive the messag from server application 
+        ws.onmessage = (msg)=> {
+            console.log(msg.data);
+        }
+        </script>
 </head>
 <body>
-    <h2>Socket.io Programming</h2>
+    <h2>Web Socket Program</h2>
+    Messages :<input type="text" id="dd"/><br/>
+    <input type="button" value="Send Data" onclick="info()"/>
 </body>
 </html>
