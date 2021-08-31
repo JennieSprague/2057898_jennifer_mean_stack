@@ -1,8 +1,6 @@
-// load the module 
 let http = require("http");
 let url = require("url");
 let fs = require("fs");
-
 let index = `
 <!doctype html>
 <html lang="en">
@@ -54,16 +52,13 @@ let index = `
     </body>
 </html>
 `
+
 let server = http.createServer((req, res) => {
   res.writeHead(200, { 'Content-Type': 'text/html' });
 
   let urlInfo = url.parse(req.url, true);
   let task_list = JSON.parse(fs.readFileSync("task_list.json").toString());
-  //let urlInfo = url.parse(request.url,true);
-  //true makes query considered a ref instead of a string
-  //console.log(urlInfo)
-  //console.log("path "+urlInfo.path)   // path :path name with query details 
-  //console.log("pathName"+urlInfo.pathname)    // pathname : only path 
+ 
   if (urlInfo.path != "/favicon.ico") {
     if (urlInfo.pathname == "/storeTask") {
       let newTaskInfo = urlInfo.query;
@@ -73,11 +68,38 @@ let server = http.createServer((req, res) => {
       let deadline = newTaskInfo.deadline;
       task_list.push({"empId" : empId, "taskId": taskId, "task":task, "deadline":deadline})
       fs.writeFileSync("task_list.json", JSON.stringify(task_list));
-      //res.write("take action to store task, empID:" + empId);
       console.log("added taskId: " + taskId);
       res.write(index);
     } else if (urlInfo.pathname == "/listTasks") {
-      res.write("take action to list tasks");
+      console.log(html);
+      if (index.indexOf('<table>') != -1){
+        // index-=html;
+        // index=index.split('<table>');
+        // index[1] = "";
+        // index.indexOf('<table>');
+        console.log(index.indexOf('<table>'));
+        console.log(index.substring(0, index.indexOf('<table>')));
+        index = index.substring(0, index.indexOf('<table>'));
+      }
+      
+      var html = '<table>';
+      html+='<tr>';
+        html+='<th> Employee Id </th>';
+        html+='<th> Task Id </th>';
+        html+='<th> Task </th>';
+        html+='<th> Deadline </th>';
+      html+='</tr>';
+      for (let i = 0; i < task_list.length; i++){
+        html+='<tr>';
+          html+='<td>'+task_list[i].empId + '</td>';
+          html+='<td>'+task_list[i].taskId + '</td>';
+          html+='<td>'+task_list[i].task + '</td>';
+          html+='<td>'+task_list[i].deadline + '</td>';
+        html+='</tr>';
+      }
+      html+='</table>';
+      index+=html;
+      res.write(index);
       
     } else if (urlInfo.pathname == "/deleteTask") {
       let taskInfo = urlInfo.query;
@@ -85,13 +107,11 @@ let server = http.createServer((req, res) => {
       if (taskId != undefined){
         let ind = task_list.findIndex(elem => elem.taskId == taskId);
         console.log(ind);
-        //JSON.splice(ind, 1);
         task_list.splice(ind,1);
         console.log("task deleted taskId: " + taskId);
         fs.writeFileSync("task_list.json", JSON.stringify(task_list));
         res.write(index);
       }
-      //res.write("take action to delete tasks");
       else{
         console.log("Id not present");
         res.write(index);
