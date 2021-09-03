@@ -7,16 +7,11 @@
     <title>Document</title>
     <!-- connecting library file part of node_module folder -->
     <script src="/socket.io/socket.io.js"></script>
-    <!-- <script type="text/JavaScript">
-        var socket = io();
-        socket.emit("obj","Hello Server I am Web Socket Client");
-        socket.on("obj1",(msg)=> {
-            console.log(msg);
-        })
-    </script> -->
-    <script type="text/JavaScript">
-        let ws = new WebSocket("ws://localhost:9090");
     
+    <!-- <script type="text/JavaScript" type = "module">
+        let obj = require("readline");
+        let ws = new WebSocket("ws://localhost:9090");
+        
         //open the connecton 
         ws.onopen= ()=> {
             // send data to web socket server application
@@ -27,15 +22,49 @@
                 document.getElementById("dd").value="";
             }
         }
+        
         // receive the messag from server application 
         ws.onmessage = (msg)=> {
             console.log(msg.data);
         }
-        </script>
+        var r1 = obj.createInterface({
+            input:process.stdin,        // standard input device keyboards 
+            output:process.stdout       // standard output device console 
+        });
+        r1.question("Server: enter message ",(message)=>{
+                document.getElementById("servermsg").value = message;
+                r1.close();
+            })
+        </script> -->
 </head>
 <body>
+    <script type="text/JavaScript">
+        var socket = io();
+        var input = document.getElementById('input');
+        var form = document.getElementById('form');
+        socket.emit("obj","Hello Server I am Web Socket Client");
+        socket.on("obj1",(msg)=> {
+            console.log(msg);
+        })
+        info = ()=> {
+            let msg = document.getElementById("dd").value;
+            ws.send(msg);
+            document.getElementById("dd").value="";
+        }
+        form.addEventListener('submit', function (e) {
+            e.preventDefault();
+            if (input.value){
+                socket.emit('message', input.value);
+                input.value = "";
+            }
+        })
+    </script>
     <h2>Web Socket Program</h2>
-    Messages :<input type="text" id="dd"/><br/>
-    <input type="button" value="Send Data" onclick="info()"/>
+    <form id = "form" action="">
+    Messages :<input type="text" id="input"/><br/>
+    <button>Send</button>
+    <!-- <input type="button" value="Send Data" onclick="info()"/> -->
+    </form>
+    <div id = "servermsg"></div>
 </body>
 </html>

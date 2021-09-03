@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/JavaScript">
+    let ws = new WebSocket("ws://localhost:8080");
+
+    //open the connection
+    ws.onopen = () => {
+        //send data to web socket server application
+        ws.send("Hello Server, I am WebSocket Client App!");
+    }
+    //receive message from server application
+    ws.onmessage = (msg)=>{
+        console.log(msg.data);
+        //document.getElementById("ex") = msg.data;
+        let newData = document.createElement("div");
+        let newText = document.createTextNode(msg.data);
+        newData.appendChild(newText);
+        let currDiv = document.getElementById("ex");
+        document.body.insertBefore(newData, currDiv);
+    }
+    
+    </script>
+</head>
+<body>
+    <h2>Web Socket Program</h2>
+    <div id = "ex"></div>
+</body>
+</html>

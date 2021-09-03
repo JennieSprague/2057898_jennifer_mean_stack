@@ -15,24 +15,25 @@ app.get("/",(req,res)=> {
     res.sendFile(__dirname+"\/index.html");
 })
 
-// io.on("connection",(socket)=> {
-//     console.log("Client connected");
-//     // receive the message from client application 
-//     socket.on("obj",(msg)=> {
-//         console.log(msg);
-//     })
-//     // sending data to client 
-//     socket.emit("obj1","Hello Client connected server...");
-// })
-app.ws("/",(socket,req)=>{
+io.on("connection",(socket)=> {
     console.log("Client connected");
-
-    socket.on("message",(msg)=>{
+    // receive the message from client application 
+    socket.on("obj",(msg)=> {
         console.log(msg);
-    });
-    socket.send("Hello Client, you are connected to the socket server app");
+    })
+    // sending data to client 
+    socket.emit("obj1","Hello Client connected server...");
+    //document.getElementById("servermsg").value="<h2> test</h2>";
 })
+// app.ws("/",(socket,req)=>{
+//     console.log("Client connected");
+
+//     socket.on("message",(msg)=>{
+//         console.log(msg);
+//     });
+//     socket.send("Hello Client, you are connected to the socket server app");
+// })
 
 // please run the server using http module not express module 
-// http.listen(9090,()=>console.log("Server running on port number 9090"));
-app.listen(9090,()=>console.log("Server running on port number 9090"));
+http.listen(9090,()=>console.log("Server running on port number 9090"));
+//app.listen(9090,()=>console.log("Server running on port number 9090"));
