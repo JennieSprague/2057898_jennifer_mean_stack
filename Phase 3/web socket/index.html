@@ -12,6 +12,16 @@
     ws.onopen = () => {
         //send data to web socket server application
         ws.send("Hello Server, I am WebSocket Client App!");
+        //without var its a global function
+        info = ()=> {
+            let msg = document.getElementById("in").value;
+            ws.send(msg);
+            document.getElementById("in").value = "";
+        }
+        name = () => {
+            let name = document.getElementById("name").value;
+            
+        }
     }
     //receive message from server application
     ws.onmessage = (msg)=>{
@@ -20,14 +30,18 @@
         let newData = document.createElement("div");
         let newText = document.createTextNode(msg.data);
         newData.appendChild(newText);
-        let currDiv = document.getElementById("ex");
-        document.body.insertBefore(newData, currDiv);
+        let currDiv = document.getElementById("btn");
+        document.body.appendChild(newData, currDiv);
     }
     
     </script>
 </head>
 <body>
     <h2>Web Socket Program</h2>
+    Enter Name : <input type="text" id = "name"><br/>
+    <input type="button" value="Submit" onclick="name()" id = "btn"/>
+    Message : <input type="text" id = "in"><br/>
+    <input type="button" value="Send Message" onclick="info()" id = "btn"/>
     <div id = "ex"></div>
 </body>
 </html>
