@@ -19,23 +19,9 @@
     <script type="text/JavaScript">
         var socket = io();
         update_course = () => {
-            //let db = client.db("Mongo");
             let id = document.getElementById("update_id").value;
             let amount = document.getElementById("update_amount").value;
             socket.emit("update", {id, amount});
-            // db.collection("Employees").updateOne({_id:id},{$set:{amount:amount}},(err,result)=> {
-            //     if(!err){
-            //         if(result.modifiedCount>0){
-            //             console.log("Record updated successfully")
-            //         }else {
-            //             console.log("Record not present")
-            //         }
-                   
-            //     }else {
-            //         console.log(err);
-            //     }
-            //     client.close();
-            // })
         }
     </script>
     <h1>Update Course</h1>

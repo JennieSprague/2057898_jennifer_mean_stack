@@ -20,21 +20,8 @@
     <script type="text/JavaScript">
         var socket = io();
         delete_course = () => {
-            //let db = client.db("Mongo");
             let id = document.getElementById("delete_id").value;
             socket.emit("delete", id);
-            // db.collection("courses").deleteOne({ _id: id }, (err, result) => {
-            //     if (!err) {
-            //         if (result.deletedCount > 0) {
-            //             console.log("Record deleted successfully")
-            //         } else {
-            //             console.log("Record not present")
-            //         }
-            //     } else {
-            //         console.log(err)
-            //     }
-            //     client.close();
-            // })
         }
     </script>
     <h1>Delete Course</h1>
