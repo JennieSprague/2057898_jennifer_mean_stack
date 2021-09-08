@@ -17,29 +17,30 @@
 </head>
 
 <body>
-    <script>
+    <script type="text/JavaScript">
+        var socket = io();
         delete_course = () => {
-            let db = client.db("Mongo");
-            let id = document.getElementById("delete_id");
-
-            db.collection("courses").deleteOne({ _id: id }, (err, result) => {
-                if (!err) {
-                    if (result.deletedCount > 0) {
-                        console.log("Record deleted successfully")
-                    } else {
-                        console.log("Record not present")
-                    }
-                } else {
-                    console.log(err)
-                }
-                client.close();
-            })
+            //let db = client.db("Mongo");
+            let id = document.getElementById("delete_id").value;
+            socket.emit("delete", id);
+            // db.collection("courses").deleteOne({ _id: id }, (err, result) => {
+            //     if (!err) {
+            //         if (result.deletedCount > 0) {
+            //             console.log("Record deleted successfully")
+            //         } else {
+            //             console.log("Record not present")
+            //         }
+            //     } else {
+            //         console.log(err)
+            //     }
+            //     client.close();
+            // })
         }
     </script>
     <h1>Delete Course</h1>
 
     <form >
-        Course ID : <input type="text" name="id" id=""> </br>
+        Course ID : <input type="text" name="id" id="delete_id"> </br>
         <input type="submit" value="Submit" onclick="delete_course()">
     </form>
 

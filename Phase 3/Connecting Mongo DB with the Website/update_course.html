@@ -17,10 +17,11 @@
 
 <body>
     <script type="text/JavaScript">
+        var socket = io();
         update_course = () => {
-            let db = client.db("Mongo");
-            let id = document.getElementById("update_id");
-            let amount = document.getElementById("update_amount");
+            //let db = client.db("Mongo");
+            let id = document.getElementById("update_id").value;
+            let amount = document.getElementById("update_amount").value;
             socket.emit("update", {id, amount});
             // db.collection("Employees").updateOne({_id:id},{$set:{amount:amount}},(err,result)=> {
             //     if(!err){
@@ -40,8 +41,8 @@
     <h1>Update Course</h1>
 
     <form >
-        Course ID : <input type="text" name="id" id=""> </br>
-        New Course Amount : <input type="text" name="amount" id=""> </br>
+        Course ID : <input type="text" name="id" id="update_id"> </br>
+        New Course Amount : <input type="text" name="amount" id="update_amount"> </br>
         <input type="submit" value="Submit" onclick="update_course()">
     </form>
 

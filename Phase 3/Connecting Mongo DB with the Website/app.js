@@ -126,7 +126,7 @@ io.on("connection", (socket) => {
         mongoClient.connect(url, (err, client) => {
             if (!err) {
                 let db = client.db("Mongo");
-                db.collection("Employees").updateOne({ _id: id }, { $set: { amount: amount } }, (err, result) => {
+                db.collection("courses").updateOne({ _id: id }, { $set: { amount: amount } }, (err, result) => {
                     if (!err) {
                         if (result.modifiedCount > 0) {
                             console.log("Record updated successfully")
@@ -142,10 +142,32 @@ io.on("connection", (socket) => {
             }
         })
     })
-})
-    //     // sending data to client 
-    //     socket.emit("obj1","Hello Client connected server...");
-    // })
 
+    // delete course from data base
+    // emmitted from delete_course.html
+    socket.on("delete", (id) => {
+        console.log(id);
+        mongoClient.connect(url, (err, client) => {
+            if (!err) {
+                let db = client.db("Mongo");
+                db.collection("courses").deleteOne({ _id: id }, (err, result) => {
+                    if (!err) {
+                        if (result.deletedCount > 0) {
+                            console.log("Record deleted successfully")
+                        } else {
+                            console.log("Record not present")
+                        }
+                    } else {
+                        console.log(err)
+                    }
+                    client.close();
+                })
+            }
+            else {
+                console.log(err);
+            }
+        })
+    })
+})
     // please run the server using http module not express module 
     http.listen(9090, () => console.log("Server running on port number 9090"));
