@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <!-- <script src="/add_course.js"></script> -->
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/app.js"></script>
+    
+
+    <title>MongoDB Courses</title>
+</head>
+
+<body>
+    <script type="text/JavaScript">
+        var socket = io();
+        // import {  } from "/app.js";
+        add_course = () => {
+            console.log("adding course");
+            let course_id = document.getElementById("add_id").value;
+            let course_name = document.getElementById("add_name").value;
+            let course_description = document.getElementById("add_desc").value;
+            let course_amount = document.getElementById("add_amount").value;
+            let course = { _id: course_id, name: course_name, description: course_description, amount: course_amount };
+            socket.emit("add", course);
+            //emit course "add"
+            //index on "add"
+        }
+        // add_course = () => {
+        //     console.log("adding course");
+        //     let db = client.db("Mongo");
+        //     let course_id = document.getElementById("add_id");
+        //     let course_name = document.getElementById("add_name");
+        //     let course_description = document.getElementById("add_desc");
+        //     let course_amount = document.getElementById("add_amount");
+        //     let course = { _id: course_id, name: course_name, description: course_description, amount: course_amount };
+        //     db.collection("courses").insertOne(course, (err, result) => {
+        //         if (!err) {
+        //             console.log("Course added");
+        //             console.log(result);
+        //         }
+        //         else {
+        //             console.log(err);
+        //         }
+        //         client.close();
+        //     })
+        // }
+    </script>
+    <h1>Add Course</h1>
+    <form>
+        Course Id : <input type="text" name="id" id="add_id"> </br>
+        Course Name : <input type="text" name="name" id="add_name"> </br>
+        Course Description : <input type="text" name="description" id="add_desc"> </br>
+        Course Amount : <input type="text" name="amount" id="add_amount"> </br>
+        <input type="submit" value="Submit" onclick="add_course()">
+    </form>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
