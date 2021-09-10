@@ -1,25 +1,89 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <script src="fetch_courses.js"></script>
-    <script src="/socket.io/socket.io.js"></script>
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <script src="fetch_courses.js"></script>
+  <script src="/socket.io/socket.io.js"></script>
 
 
-    <title>Course List</title>
-  </head>
-  <body>
-    <h1>List of Courses</h1>
-    
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-  </body>
+  <title>Course List</title>
+</head>
+
+<body>
+  <script type="text/JavaScript">
+      var socket = io();
+      fetch_courses = () => {
+        console.log("fetching");
+          let course = 101;
+          let table = document.getElementById("course_table");
+          let row = document.createElement("tr");
+          socket.emit("fetch", {course, table});
+      }
+      fetch_courses();
+      socket.on("course_list", (course_list) =>{
+        console.log("returned fetch");
+        // Array.from(course_list).forEach(doc => {
+        //   console.log("printing");
+        //   console.log("Doc"+doc);
+        //   //html table insert
+        //   console.log("Id "+doc._id+" Name "+doc.name + " Description " + doc.description + " Amount " + doc.amount);
+        // })
+        oldDiv = document.findElementById("table");
+        document.body.insertBefore(course_list, oldDiv);
+
+      })
+      socket.on("doc",(doc) => {
+        console.log(doc);
+        let table = document.getElementById("course_table");        
+        let tbody = document.createElement("tbody");
+        table.appendChild(tbody);
+        let row = document.createElement("tr");
+        let cell = document.createElement("td");
+        cell.textContent = doc._id;
+        row.appendChild(cell);
+        let cell2 = document.createElement("td");
+        cell2.textContent = doc.name;
+        row.appendChild(cell2);
+        let cell3 = document.createElement("td");
+        cell3.textContent = doc.description;
+        row.appendChild(cell3);
+        let cell4 = document.createElement("td");
+        cell4.textContent = doc.amount;
+        row.appendChild(cell4);
+        tbody.appendChild(row);
+        
+      })
+  </script>
+  <h1>List of Courses</h1>
+  <div id="table"></div>
+  <table id="course_table">
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Amount</th>
+      </tr>
+    </thead>
+  </table>
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+</body>
+
 </html>

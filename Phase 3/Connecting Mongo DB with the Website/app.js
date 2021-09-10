@@ -113,8 +113,48 @@ io.on("connection", (socket) => {
     })
 
     // fetch all courses from database
-    socket.on("fetch", (courses) =>{
-
+    socket.on("fetch", ({courses, table}) =>{
+        console.log("fetching in app");
+        mongoClient.connect(url,(err,client)=> {
+            if(!err){
+                console.log("Connected")
+                let db = client.db("Mongo");
+                //let cursor = db.collection("Employees").find();
+                // retrieve document with condition 
+                // let newDiv = document.createElement("div");
+                // let table = document.createElement("table");
+                // let header = document.createElement("th");
+                // let data = document.createElement("td");
+                //let table = document.getElementById("cart_table")
+                
+                //let tbody = document.createElement("tbody");
+                //table.appendChild(tbody);
+                let cursor = db.collection("courses").find();
+                cursor.forEach(doc=> {
+                    //console.log("Name "+doc.name+" Salary "+doc.salary);
+                    console.log(doc);
+                    socket.emit("doc",doc);
+                    // let row = document.createElement("tr");
+                    // let cell = document.createElement("td");
+                    // socket.emit("td_tr",)
+                    // cell.textContent = doc._id;
+                    // row.appendChild(cell);
+                    // cell.textContent = doc.name;
+                    // row.appendChild(cell);
+                    // cell.textContent = doc.description;
+                    // row.appendChild(cell);
+                    // cell.textContent = doc.amount;
+                    // row.appendChild(cell);
+                    // tbody.appendChild(row);
+                    client.close();
+                })
+                console.log("Cursor" + cursor);
+                //socket.emit("course_list", newDiv);
+                
+            }else {
+                console.log(err);
+            }
+        })
     })
 })
     // please run the server using http module not express module 
